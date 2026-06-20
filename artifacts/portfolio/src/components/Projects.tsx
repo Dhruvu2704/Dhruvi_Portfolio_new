@@ -1,90 +1,130 @@
 import { motion } from "framer-motion";
-import { SiGithub } from "react-icons/si";
-import { ExternalLink } from "lucide-react";
+
+const exhibits = [
+  {
+    number: "Exhibit I",
+    title: "Crime Atlas",
+    subtitle: "ML Crime Analytics Platform",
+    stack: "Python · Scikit-Learn · Pandas · Flask · HTML/CSS",
+    story: "Started as a question — can raw crime data reveal patterns that prevent harm? Built an end-to-end platform from data ingestion to deployment.",
+    problem: "Crime data exists but insight doesn't. Analysts need tools that surface patterns, not just numbers.",
+    process: "Raw data ingestion → Feature engineering → Scikit-Learn model training → Flask REST API → Interactive dashboard → Deployed on Render.",
+    outcome: "A publicly accessible live application with crime-hotspot mapping across 5+ analytical dimensions.",
+    links: { github: "#", live: "#" },
+  },
+  {
+    number: "Exhibit II",
+    title: "REEL",
+    subtitle: "AI Movie Recommendation Engine",
+    stack: "Python · NLP · Scikit-Learn · Pandas · NumPy",
+    story: "A recommendation problem. 5,000+ movies, one user, infinite options.",
+    problem: "How do you recommend what someone doesn't know they want yet?",
+    process: "CountVectorizer → cosine similarity on movie metadata → optimized vectorization pipeline → responsive UI.",
+    outcome: "A personalized recommendation engine with measurably faster query performance on large datasets.",
+    links: { github: "#" },
+  },
+  {
+    number: "Exhibit III",
+    title: "NexusCRM",
+    subtitle: "Customer Relationship Management Platform",
+    stack: "Python · Flask · SQLAlchemy · HTML/CSS",
+    story: "Built to understand what goes into enterprise-grade software — auth, data, scale.",
+    problem: "Most CRM tutorials scratch the surface. This one goes deep.",
+    process: "Role-based authentication → CRUD operations → SQLAlchemy ORM → RESTful API endpoints → Modular architecture.",
+    outcome: "A production-ready CRM with responsive dashboards and scalable customer lifecycle management.",
+    links: { github: "#" },
+  },
+  {
+    number: "Exhibit IV",
+    title: "Hospital Management System",
+    subtitle: "Systems Programming",
+    stack: "C · Data Structures · File Handling",
+    story: "Before frameworks and libraries — understanding the foundation.",
+    problem: "How do you build a real system with no libraries, just C and a file system?",
+    process: "Modular architecture → file-based persistent storage → data structures for patient, doctor, and appointment management.",
+    outcome: "A working console-based management system built from first principles.",
+    links: {},
+  },
+];
 
 export default function Projects() {
-  const projects = [
-    {
-      title: "Crime Atlas",
-      tag: "ML / Data Science",
-      badges: ["Python", "Scikit-Learn", "Pandas", "Flask", "HTML/CSS"],
-      desc: "Engineered an end-to-end ML crime analytics platform — from raw data ingestion and feature engineering to model training, REST API integration, and public cloud deployment on Render. Interactive dashboards with crime-hotspot mapping across 5+ analytical dimensions.",
-      links: { github: "#", live: "#" }
-    },
-    {
-      title: "REEL — AI Movie Recommendation",
-      tag: "NLP / ML",
-      badges: ["Python", "NLP", "Scikit-Learn", "Pandas", "NumPy"],
-      desc: "Content-based filtering recommendation engine using CountVectorizer + cosine similarity on 5,000+ movie metadata records. Optimized vectorization and similarity pipeline for large-scale dataset queries.",
-      links: { github: "#" }
-    },
-    {
-      title: "NexusCRM",
-      tag: "Full-Stack",
-      badges: ["Python", "Flask", "SQLAlchemy", "HTML/CSS"],
-      desc: "Full-stack CRM with role-based authentication, CRUD operations, and relational database integration. Modular backend with RESTful API endpoints for scalable customer lifecycle management.",
-      links: { github: "#" }
-    },
-    {
-      title: "Hospital Management System",
-      tag: "Systems",
-      badges: ["C", "Data Structures", "File Handling"],
-      desc: "Console-based system managing patients, doctors, and appointments using modular architecture and file-based persistent storage in C.",
-      links: {}
-    }
-  ];
-
   return (
-    <section id="projects" className="py-24 relative z-10">
-      <div className="container mx-auto px-6">
+    <section id="projects" className="py-24 border-t border-border" data-testid="projects-section">
+      <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12"
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-3xl font-mono font-bold text-white mb-2">/projects</h2>
-          <div className="w-20 h-1 bg-accent"></div>
+          <p className="section-label mb-4">03 — Projects</p>
+          <p
+            className="mb-12"
+            style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.82rem", color: "hsl(0 0% 42%)" }}
+          >
+            Projects become exhibits.
+          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, idx) => (
+        <div className="flex flex-col">
+          {exhibits.map((ex, i) => (
             <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="glass p-8 rounded-xl relative group hover:-translate-y-2 transition-transform duration-300"
+              transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
+              style={{ borderTop: "1px solid hsl(0 0% 88%)", paddingTop: "2.5rem", paddingBottom: "2.5rem" }}
+              data-testid={`exhibit-${i}`}
             >
-              <div className="absolute top-4 right-4 text-xs font-mono text-accent bg-accent/10 px-3 py-1 rounded-full border border-accent/20">
-                {project.tag}
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4 mt-2">{project.title}</h3>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.badges.map(badge => (
-                  <span key={badge} className="text-xs font-mono text-muted-foreground bg-white/5 px-2 py-1 rounded">
-                    {badge}
-                  </span>
-                ))}
-              </div>
-              <p className="text-muted-foreground mb-6 line-clamp-3 group-hover:line-clamp-none transition-all">
-                {project.desc}
+              <p className="section-label mb-3">{ex.number}</p>
+              <h3
+                className="font-serif mb-1"
+                style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "hsl(0 0% 5%)", lineHeight: "1.15" }}
+              >
+                {ex.title}
+              </h3>
+              <p
+                className="mb-8"
+                style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.78rem", color: "hsl(0 0% 42%)", fontStyle: "italic" }}
+              >
+                {ex.subtitle} — {ex.stack}
               </p>
-              <div className="flex gap-4">
-                {project.links.github && (
-                  <a href={project.links.github} className="text-white hover:text-primary transition-colors flex items-center gap-2">
-                    <SiGithub size={20} /> <span className="font-mono text-sm">Code</span>
+
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.8rem", color: "hsl(0 0% 28%)", lineHeight: "1.8" }}>
+                  <p className="section-label mb-2">Background</p>
+                  <p>{ex.story}</p>
+                </div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.8rem", color: "hsl(0 0% 28%)", lineHeight: "1.8" }}>
+                  <p className="section-label mb-2">Problem</p>
+                  <p>{ex.problem}</p>
+                </div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.8rem", color: "hsl(0 0% 28%)", lineHeight: "1.8" }}>
+                  <p className="section-label mb-2">Process</p>
+                  <p>{ex.process}</p>
+                </div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.8rem", color: "hsl(0 0% 28%)", lineHeight: "1.8" }}>
+                  <p className="section-label mb-2">Outcome</p>
+                  <p>{ex.outcome}</p>
+                </div>
+              </div>
+
+              <div className="flex gap-6">
+                {ex.links.github && (
+                  <a href={ex.links.github} className="exhibit-link" data-testid={`exhibit-${i}-github`}>
+                    GitHub →
                   </a>
                 )}
-                {project.links.live && (
-                  <a href={project.links.live} className="text-white hover:text-secondary transition-colors flex items-center gap-2">
-                    <ExternalLink size={20} /> <span className="font-mono text-sm">Live</span>
+                {ex.links.live && (
+                  <a href={ex.links.live} className="exhibit-link" data-testid={`exhibit-${i}-live`}>
+                    Live Demo →
                   </a>
                 )}
               </div>
             </motion.div>
           ))}
+          <div style={{ borderTop: "1px solid hsl(0 0% 88%)" }} />
         </div>
       </div>
     </section>

@@ -1,62 +1,48 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+
+const links = [
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Contact", href: "#contact" },
+];
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    document.querySelectorAll("section[id]").forEach((section) => {
-      observer.observe(section);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const navLinks = [
-    { id: "about", label: "ABOUT" },
-    { id: "skills", label: "SKILLS" },
-    { id: "projects", label: "PROJECTS" },
-    { id: "experience", label: "EXPERIENCE" },
-    { id: "contact", label: "CONTACT" },
-  ];
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "glass py-4" : "bg-transparent py-6"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style={{
+        borderBottom: `1px solid ${scrolled ? "hsl(0 0% 88%)" : "transparent"}`,
+        backgroundColor: scrolled ? "rgba(249,249,249,0.92)" : "transparent",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+      }}
+      data-testid="navigation"
     >
-      <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="#hero" className="text-xl font-mono font-bold text-white tracking-wider">
-          DS<span className="text-primary">.</span>
+      <div className="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
+        <a
+          href="#"
+          className="section-label"
+          style={{ color: "hsl(0 0% 5%)", letterSpacing: "0.15em" }}
+          data-testid="nav-logo"
+        >
+          DS.
         </a>
-        <div className="hidden md:flex gap-8">
-          {navLinks.map((link) => (
+        <div className="hidden md:flex items-center gap-10">
+          {links.map((link) => (
             <a
-              key={link.id}
-              href={`#${link.id}`}
-              className={`font-mono text-sm tracking-widest transition-colors ${
-                activeSection === link.id ? "text-accent" : "text-muted-foreground hover:text-white"
-              }`}
+              key={link.href}
+              href={link.href}
+              className="section-label transition-colors hover:text-foreground"
+              data-testid={`nav-link-${link.label.toLowerCase()}`}
             >
               {link.label}
             </a>

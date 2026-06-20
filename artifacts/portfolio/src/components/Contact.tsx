@@ -1,84 +1,130 @@
 import { motion } from "framer-motion";
-import { SiGithub } from "react-icons/si";
-import { Linkedin, Code2, ChefHat } from "lucide-react";
+import { useState } from "react";
 
 export default function Contact() {
+  const [submitted, setSubmitted] = useState(false);
+
   return (
-    <section id="contact" className="py-24 relative z-10">
-      <div className="container mx-auto px-6 max-w-4xl">
+    <section id="contact" className="py-24 border-t border-border" data-testid="contact-section">
+      <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-4xl md:text-5xl font-mono font-bold text-white mb-6">
-            Let's Build Something Extraordinary Together.
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            Open to internships, collaborations, and projects. Let's connect.
-          </p>
-        </motion.div>
+          <p className="section-label mb-12">05 — Contact</p>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="glass p-8 rounded-xl space-y-8">
-              <div>
-                <h3 className="text-sm font-mono text-primary mb-2">EMAIL</h3>
-                <a href="mailto:dhruvisrivastava27@gmail.com" className="text-lg text-white hover:text-accent transition-colors">
-                  dhruvisrivastava27@gmail.com
+          <div className="grid md:grid-cols-2 gap-16">
+            <div>
+              <h2
+                className="font-serif mb-6"
+                style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "hsl(0 0% 5%)", lineHeight: "1.2" }}
+              >
+                Let's Build Something Extraordinary Together.
+              </h2>
+              <p
+                style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.8rem", color: "hsl(0 0% 42%)", marginBottom: "2rem", lineHeight: "1.8" }}
+              >
+                Open to internships, collaborations, and research projects.
+              </p>
+
+              <div style={{ borderTop: "1px solid hsl(0 0% 88%)", paddingTop: "1.5rem", marginBottom: "1.5rem" }}>
+                <p className="section-label mb-2">Email</p>
+                <a
+                  href="mailto:dhruvisrivastava27@gmail.com"
+                  className="exhibit-link"
+                  data-testid="contact-email"
+                >
+                  dhruvisrivastava27@gmail.com →
                 </a>
               </div>
-              
-              <div>
-                <h3 className="text-sm font-mono text-primary mb-4">SOCIALS</h3>
-                <div className="flex gap-4">
-                  <a href="#" className="p-3 bg-white/5 rounded-full hover:bg-primary/20 text-white transition-all hover:-translate-y-1"><Linkedin size={24} /></a>
-                  <a href="#" className="p-3 bg-white/5 rounded-full hover:bg-white/20 text-white transition-all hover:-translate-y-1"><SiGithub size={24} /></a>
-                  <a href="#" className="p-3 bg-white/5 rounded-full hover:bg-orange-500/20 text-white transition-all hover:-translate-y-1"><Code2 size={24} /></a>
-                  <a href="#" className="p-3 bg-white/5 rounded-full hover:bg-yellow-600/20 text-white transition-all hover:-translate-y-1"><ChefHat size={24} /></a>
+
+              <div style={{ borderTop: "1px solid hsl(0 0% 88%)", paddingTop: "1.5rem" }}>
+                <p className="section-label mb-3">Elsewhere</p>
+                <div className="flex flex-wrap gap-6">
+                  {["GitHub", "LinkedIn", "LeetCode", "CodeChef"].map((name) => (
+                    <a
+                      key={name}
+                      href="#"
+                      className="exhibit-link"
+                      data-testid={`contact-social-${name.toLowerCase()}`}
+                    >
+                      {name} →
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            <div>
+              {submitted ? (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex flex-col justify-center h-full"
+                  style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.85rem", color: "hsl(0 0% 28%)" }}
+                >
+                  <p className="section-label mb-3">Received.</p>
+                  <p>Thank you for reaching out. I'll be in touch.</p>
+                </motion.div>
+              ) : (
+                <form
+                  className="flex flex-col gap-8"
+                  onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+                  data-testid="contact-form"
+                >
+                  <div>
+                    <label className="section-label block mb-2">Name</label>
+                    <input
+                      type="text"
+                      placeholder="Your name"
+                      required
+                      className="underline-input"
+                      data-testid="input-name"
+                    />
+                  </div>
+                  <div>
+                    <label className="section-label block mb-2">Email</label>
+                    <input
+                      type="email"
+                      placeholder="your@email.com"
+                      required
+                      className="underline-input"
+                      data-testid="input-email"
+                    />
+                  </div>
+                  <div>
+                    <label className="section-label block mb-2">Message</label>
+                    <textarea
+                      placeholder="What are you working on?"
+                      rows={4}
+                      required
+                      className="underline-input resize-none"
+                      data-testid="input-message"
+                    />
+                  </div>
+                  <div>
+                    <button
+                      type="submit"
+                      className="exhibit-link"
+                      style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+                      data-testid="button-send"
+                    >
+                      Send →
+                    </button>
+                  </div>
+                </form>
+              )}
+            </div>
+          </div>
+
+          <div
+            style={{ borderTop: "1px solid hsl(0 0% 88%)", marginTop: "5rem", paddingTop: "1.5rem" }}
           >
-            <form className="glass p-8 rounded-xl flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
-              <div>
-                <input 
-                  type="text" 
-                  placeholder="Name" 
-                  className="w-full bg-transparent border-b border-border py-2 text-white placeholder:text-muted-foreground focus:outline-none border-glow transition-colors"
-                />
-              </div>
-              <div>
-                <input 
-                  type="email" 
-                  placeholder="Email" 
-                  className="w-full bg-transparent border-b border-border py-2 text-white placeholder:text-muted-foreground focus:outline-none border-glow transition-colors"
-                />
-              </div>
-              <div>
-                <textarea 
-                  placeholder="Message" 
-                  rows={4}
-                  className="w-full bg-transparent border-b border-border py-2 text-white placeholder:text-muted-foreground focus:outline-none border-glow transition-colors resize-none"
-                />
-              </div>
-              <button className="px-6 py-3 bg-primary text-white font-mono font-bold rounded hover:bg-primary/80 transition-all hover:shadow-[0_0_15px_rgba(139,92,246,0.5)] mt-4">
-                Send Message
-              </button>
-            </form>
-          </motion.div>
-        </div>
+            <p className="section-label">2025 Dhruvi Srivastava</p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

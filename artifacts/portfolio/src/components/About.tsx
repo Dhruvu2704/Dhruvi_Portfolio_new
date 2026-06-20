@@ -1,70 +1,58 @@
 import { motion } from "framer-motion";
 
-export default function About() {
-  const stats = [
-    { label: "CPI", value: "9.16/10" },
-    { label: "Projects Deployed", value: "3+" },
-    { label: "GitHub Repos", value: "20+" },
-    { label: "DSA", value: "LeetCode & CodeChef" },
-  ];
+const stats = [
+  { label: "CPI", value: "9.16 / 10" },
+  { label: "Projects Deployed", value: "3+" },
+  { label: "GitHub Repositories", value: "20+" },
+  { label: "DSA Practice", value: "LeetCode & CodeChef" },
+];
 
+export default function About() {
   return (
-    <section id="about" className="py-24 relative z-10">
-      <div className="container mx-auto px-6">
+    <section id="about" className="py-24 border-t border-border" data-testid="about-section">
+      <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12"
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-3xl font-mono font-bold text-white mb-2">/about</h2>
-          <div className="w-20 h-1 bg-primary"></div>
+          <p className="section-label mb-12">01 — About</p>
+
+          <div className="grid md:grid-cols-2 gap-16">
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.85rem", color: "hsl(0 0% 28%)", lineHeight: "1.9" }}>
+              <p className="mb-6">
+                I'm a first-year AI &amp; Data Science engineering student who builds real systems — not just studies them. My focus is on engineering machine learning applications from concept to production.
+              </p>
+              <p className="mb-6">
+                In February 2025, I represented Tagglabs at the Global AI Summit (Bharat Mandapam, New Delhi) — engaging 500+ attendees including founders, engineers, and investors from the AI ecosystem.
+              </p>
+              <p>
+                Generative AI Certification — NASBA (National Association of State Boards of Accountancy).
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-0">
+              {stats.map((stat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
+                  style={{ borderTop: "1px solid hsl(0 0% 88%)", paddingTop: "1.25rem", paddingBottom: "1.25rem" }}
+                  data-testid={`stat-${i}`}
+                >
+                  <p className="section-label mb-1">{stat.label}</p>
+                  <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "1.5rem", color: "hsl(0 0% 5%)" }}>
+                    {stat.value}
+                  </p>
+                </motion.div>
+              ))}
+              <div style={{ borderTop: "1px solid hsl(0 0% 88%)" }} />
+            </div>
+          </div>
         </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-6 text-muted-foreground text-lg leading-relaxed"
-          >
-            <p>
-              I'm a 1st-year AI & Data Science student who builds real things, not just learns them. 
-              My focus is on engineering machine learning systems and intelligent applications from 
-              concept to production.
-            </p>
-            <div className="glass p-6 rounded-lg">
-              <h3 className="text-white font-mono mb-2">Education</h3>
-              <p>B.Tech CSE (AI & Data Science)</p>
-              <p>GLA University, Greater Noida</p>
-              <p>Expected May 2029</p>
-            </div>
-            <div className="space-y-4">
-              <div className="border-l-2 border-primary pl-4">
-                <p className="text-white">Represented Tagglabs at Global AI Summit (Feb 2025)</p>
-                <p className="text-sm">Engaged 500+ attendees including founders, engineers, and investors.</p>
-              </div>
-              <div className="border-l-2 border-secondary pl-4">
-                <p className="text-white">Generative AI Certification</p>
-                <p className="text-sm">NASBA Certified</p>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-2 gap-4"
-          >
-            {stats.map((stat, i) => (
-              <div key={i} className="glass p-6 rounded-lg flex flex-col justify-center items-center text-center hover:border-primary/50 transition-colors">
-                <span className="text-2xl font-bold font-mono text-white mb-2">{stat.value}</span>
-                <span className="text-sm text-muted-foreground">{stat.label}</span>
-              </div>
-            ))}
-          </motion.div>
-        </div>
       </div>
     </section>
   );

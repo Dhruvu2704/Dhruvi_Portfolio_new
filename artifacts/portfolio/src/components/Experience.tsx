@@ -2,43 +2,58 @@ import { motion } from "framer-motion";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 relative z-10">
-      <div className="container mx-auto px-6">
+    <section id="experience" className="py-24 border-t border-border" data-testid="experience-section">
+      <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12"
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-3xl font-mono font-bold text-white mb-2">/experience</h2>
-          <div className="w-20 h-1 bg-pink-500"></div>
-        </motion.div>
+          <p className="section-label mb-12">04 — Experience</p>
 
-        <div className="relative pl-8 md:pl-0">
-          {/* Vertical Line */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2">
-            <div className="w-full h-1/2 bg-gradient-to-b from-primary to-pink-500"></div>
-          </div>
+          <div style={{ borderTop: "1px solid hsl(0 0% 88%)", paddingTop: "2.5rem", paddingBottom: "2.5rem" }}>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div>
+                <p className="section-label mb-3">Position</p>
+                <p
+                  className="font-serif mb-1"
+                  style={{ fontSize: "1.15rem", color: "hsl(0 0% 5%)", lineHeight: "1.4" }}
+                >
+                  Event Promoter &amp; AI Tech Showcase Representative
+                </p>
+                <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.78rem", color: "hsl(0 0% 42%)", marginTop: "0.5rem" }}>
+                  Tagglabs
+                </p>
+              </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="md:w-1/2 md:pr-12 md:ml-auto md:text-left relative"
-          >
-            <div className="hidden md:block absolute top-6 -left-3 w-6 h-6 rounded-full bg-background border-2 border-primary z-10"></div>
-            
-            <div className="glass p-8 rounded-xl border border-primary/20 hover:border-primary/50 transition-colors">
-              <h3 className="text-xl font-bold text-white mb-1">Event Promoter & AI Tech Showcase Representative</h3>
-              <div className="text-primary font-mono text-sm mb-4">Tagglabs | Feb 2025 | Bharat Mandapam, New Delhi</div>
-              
-              <ul className="space-y-3 text-muted-foreground list-disc pl-4">
-                <li>Represented Tagglabs at the Global AI Summit, engaging 500+ attendees including founders, engineers, and investors from the AI ecosystem.</li>
-                <li>Showcased AI-powered products and interactive demos; strengthened stakeholder communication and professional networking.</li>
-              </ul>
+              <div>
+                <p className="section-label mb-3">Event</p>
+                <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.82rem", color: "hsl(0 0% 18%)", lineHeight: "1.8" }}>
+                  Global AI Summit
+                </p>
+                <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.78rem", color: "hsl(0 0% 42%)", marginTop: "0.25rem" }}>
+                  February 2025
+                  <br />
+                  Bharat Mandapam, New Delhi
+                </p>
+              </div>
+
+              <div>
+                <p className="section-label mb-3">Highlights</p>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.8rem", color: "hsl(0 0% 28%)", lineHeight: "1.85" }}>
+                  <p className="mb-4">
+                    Represented Tagglabs at the Global AI Summit, engaging 500+ attendees including founders, engineers, and investors from the AI ecosystem.
+                  </p>
+                  <p>
+                    Showcased AI-powered products and interactive demos; strengthened stakeholder communication and professional networking in a premier national technology event.
+                  </p>
+                </div>
+              </div>
             </div>
-          </motion.div>
-        </div>
+          </div>
+          <div style={{ borderTop: "1px solid hsl(0 0% 88%)" }} />
+        </motion.div>
       </div>
     </section>
   );
