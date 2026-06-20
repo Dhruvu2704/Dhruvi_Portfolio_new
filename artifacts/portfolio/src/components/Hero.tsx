@@ -4,95 +4,86 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center pt-24 pb-16"
       data-testid="hero-section"
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-end",
+        padding: "0 2rem 6rem",
+        maxWidth: "1200px",
+        margin: "0 auto",
+        position: "relative",
+      }}
     >
-      <div className="max-w-5xl mx-auto px-6 w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-        >
-          <p className="section-label mb-8">The Work of</p>
-          <h1
-            className="font-serif leading-none mb-8"
-            style={{ fontSize: "clamp(3.5rem, 9vw, 8rem)", color: "hsl(0 0% 5%)" }}
-            data-testid="hero-name"
-          >
-            Dhruvi Srivastava
-          </h1>
-        </motion.div>
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "1px",
+          height: "120px",
+          background: "linear-gradient(to bottom, transparent, #C9A96E44, transparent)",
+          opacity: 0.6,
+        }}
+      />
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-          className="section-label mb-12"
-          style={{ fontSize: "0.75rem" }}
-        >
-          A collection of systems, experiments, and ideas.
-        </motion.p>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+      >
+        <p className="exhibit-label" style={{ marginBottom: "2rem", color: "#C9A96E" }}>
+          Museum of Engineering &amp; Artificial Intelligence
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
-          style={{ borderTop: "1px solid hsl(0 0% 88%)", paddingTop: "2rem" }}
+        <h1
+          className="font-serif"
+          data-testid="hero-name"
+          style={{
+            fontSize: "clamp(3.5rem, 9vw, 9rem)",
+            fontWeight: 300,
+            lineHeight: 1.0,
+            letterSpacing: "-0.02em",
+            color: "#E8E4DC",
+            marginBottom: "3rem",
+          }}
         >
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.78rem", color: "hsl(0 0% 42%)", lineHeight: "1.8" }}>
-              <p>B.Tech CSE (AI &amp; Data Science)</p>
-              <p>GLA University, Greater Noida</p>
-              <p>CPI: 9.16 / 10</p>
-            </div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.78rem" }} className="flex gap-6">
-              <a
-                href="#"
-                className="exhibit-link"
-                data-testid="hero-link-github"
-              >
-                GitHub →
-              </a>
-              <a
-                href="#"
-                className="exhibit-link"
-                data-testid="hero-link-linkedin"
-              >
-                LinkedIn →
-              </a>
-              <a
-                href="#"
-                className="exhibit-link"
-                data-testid="hero-link-leetcode"
-              >
-                LeetCode →
-              </a>
-              <a
-                href="mailto:dhruvisrivastava27@gmail.com"
-                className="exhibit-link"
-                data-testid="hero-link-mail"
-              >
-                Mail →
-              </a>
-            </div>
-          </div>
-        </motion.div>
+          Dhruvi<br />
+          <span style={{ fontStyle: "italic", color: "#C9A96E" }}>Srivastava</span>
+        </h1>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem", marginBottom: "4rem" }}>
+          {["Engineer.", "Builder.", "AI Explorer."].map((word, i) => (
+            <motion.p
+              key={word}
+              initial={{ opacity: 0, x: -16 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 + i * 0.15, ease: "easeOut" }}
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "clamp(1rem, 2.5vw, 1.4rem)",
+                fontWeight: 300,
+                color: i === 0 ? "#E8E4DC" : "#7A7570",
+                letterSpacing: "0.02em",
+              }}
+            >
+              {word}
+            </motion.p>
+          ))}
+        </div>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-          className="mt-16"
+          transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+          style={{ display: "flex", alignItems: "center", gap: "2rem" }}
         >
-          <a
-            href="#about"
-            className="section-label"
-            style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}
-          >
-            Scroll ↓
-          </a>
+          <div className="gold-line" />
+          <p className="exhibit-label">Scroll to enter the exhibition</p>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Mono:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
@@ -11,128 +11,154 @@
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
-
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
   --color-card-border: hsl(var(--card-border));
-
   --color-popover: hsl(var(--popover));
   --color-popover-foreground: hsl(var(--popover-foreground));
   --color-popover-border: hsl(var(--popover-border));
-
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
-
-  --font-sans: 'DM Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
   --font-mono: 'DM Mono', monospace;
-  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
 }
 
 :root {
-  --background: 0 0% 98%;
-  --foreground: 0 0% 5%;
-
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 5%;
-  --card-border: 0 0% 88%;
-
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 5%;
-  --popover-border: 0 0% 88%;
-
-  --primary: 243 75% 44%;
-  --primary-foreground: 0 0% 100%;
-
-  --secondary: 0 0% 96%;
-  --secondary-foreground: 0 0% 5%;
-
-  --muted: 0 0% 94%;
-  --muted-foreground: 0 0% 42%;
-
-  --accent: 243 75% 44%;
-  --accent-foreground: 0 0% 100%;
-
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 100%;
-
-  --border: 0 0% 88%;
-  --input: 0 0% 88%;
-  --ring: 243 75% 44%;
-
+  --background: 240 4% 5%;
+  --foreground: 38 18% 88%;
+  --card: 240 4% 8%;
+  --card-foreground: 38 18% 88%;
+  --card-border: 240 4% 14%;
+  --popover: 240 4% 8%;
+  --popover-foreground: 38 18% 88%;
+  --popover-border: 240 4% 14%;
+  --primary: 38 48% 60%;
+  --primary-foreground: 240 4% 5%;
+  --secondary: 240 4% 14%;
+  --secondary-foreground: 38 18% 88%;
+  --muted: 240 4% 12%;
+  --muted-foreground: 240 4% 52%;
+  --accent: 38 48% 60%;
+  --accent-foreground: 240 4% 5%;
+  --destructive: 0 62% 50%;
+  --destructive-foreground: 38 18% 88%;
+  --border: 240 4% 14%;
+  --input: 240 4% 14%;
+  --ring: 38 48% 60%;
   --radius: 0rem;
 }
 
 @layer base {
   * {
     @apply border-border;
+    box-sizing: border-box;
   }
   html {
     scroll-behavior: smooth;
-    background-color: #f9f9f9;
+    background-color: #0B0B0D;
   }
   body {
-    @apply bg-background text-foreground antialiased overflow-x-hidden;
-    font-family: 'DM Mono', monospace;
+    background-color: #0B0B0D;
+    color: #E8E4DC;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 }
 
 .font-serif {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Cormorant Garamond', Georgia, serif;
 }
-
-.section-label {
+.font-mono-display {
   font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: hsl(var(--muted-foreground));
 }
 
-.exhibit-link {
+.exhibit-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #7A7570;
+}
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.spotlight-cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  transition: background 0.08s ease;
+}
+
+.exhibit-number {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(8rem, 20vw, 18rem);
+  font-weight: 300;
+  line-height: 1;
+  color: rgba(232, 228, 220, 0.04);
+  user-select: none;
+  pointer-events: none;
+  letter-spacing: -0.04em;
+}
+
+.gold-line {
+  width: 2.5rem;
+  height: 1px;
+  background: #C9A96E;
+}
+
+.museum-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7A7570;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.8rem;
-  color: hsl(var(--foreground));
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: gap 0.2s ease;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
 }
-
-.exhibit-link:hover {
-  gap: 0.6rem;
+.museum-link:hover {
+  color: #C9A96E;
+  gap: 0.75rem;
 }
 
 .underline-input {
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid hsl(var(--border));
-  padding: 0.6rem 0;
-  font-family: 'DM Mono', monospace;
+  border-bottom: 1px solid #2A2A2E;
+  padding: 0.75rem 0;
+  font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
-  color: hsl(var(--foreground));
+  font-weight: 300;
+  color: #E8E4DC;
   outline: none;
   transition: border-color 0.2s ease;
 }
-
 .underline-input::placeholder {
-  color: hsl(var(--muted-foreground));
+  color: #4A4A4E;
 }
-
 .underline-input:focus {
-  border-bottom-color: hsl(var(--foreground));
+  border-bottom-color: #C9A96E;
 }

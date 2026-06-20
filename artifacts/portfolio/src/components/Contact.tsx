@@ -1,131 +1,153 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
+const socials = [
+  { label: "GitHub", href: "#" },
+  { label: "LinkedIn", href: "#" },
+  { label: "LeetCode", href: "#" },
+  { label: "CodeChef", href: "#" },
+  { label: "Email", href: "mailto:dhruvisrivastava27@gmail.com" },
+];
+
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const [sent, setSent] = useState(false);
 
   return (
-    <section id="contact" className="py-24 border-t border-border" data-testid="contact-section">
-      <div className="max-w-5xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+    <section
+      id="contact"
+      data-testid="contact-section"
+      style={{
+        borderTop: "1px solid #1E1E22",
+        padding: "10rem 2rem",
+        maxWidth: "1200px",
+        margin: "0 auto",
+        position: "relative",
+      }}
+    >
+      <div className="exhibit-number" style={{ position: "absolute", top: "4rem", right: 0 }}>06</div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 32 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
+      >
+        <p className="exhibit-label" style={{ color: "#C9A96E", marginBottom: "1.5rem" }}>
+          End of Exhibition
+        </p>
+        <div className="gold-line" style={{ marginBottom: "4rem" }} />
+
+        <h2
+          className="font-serif"
+          style={{
+            fontSize: "clamp(2rem, 6vw, 5rem)",
+            fontWeight: 300,
+            fontStyle: "italic",
+            color: "#E8E4DC",
+            lineHeight: 1.1,
+            letterSpacing: "-0.02em",
+            marginBottom: "1.5rem",
+            maxWidth: "700px",
+          }}
         >
-          <p className="section-label mb-12">05 — Contact</p>
+          Let's Build Something Extraordinary Together.
+        </h2>
+        <p
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "0.85rem",
+            fontWeight: 300,
+            color: "#5A5550",
+            marginBottom: "5rem",
+          }}
+        >
+          Open to internships, research collaborations, and ambitious projects.
+        </p>
 
-          <div className="grid md:grid-cols-2 gap-16">
-            <div>
-              <h2
-                className="font-serif mb-6"
-                style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "hsl(0 0% 5%)", lineHeight: "1.2" }}
-              >
-                Let's Build Something Extraordinary Together.
-              </h2>
-              <p
-                style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.8rem", color: "hsl(0 0% 42%)", marginBottom: "2rem", lineHeight: "1.8" }}
-              >
-                Open to internships, collaborations, and research projects.
-              </p>
-
-              <div style={{ borderTop: "1px solid hsl(0 0% 88%)", paddingTop: "1.5rem", marginBottom: "1.5rem" }}>
-                <p className="section-label mb-2">Email</p>
-                <a
-                  href="mailto:dhruvisrivastava27@gmail.com"
-                  className="exhibit-link"
-                  data-testid="contact-email"
-                >
-                  dhruvisrivastava27@gmail.com →
-                </a>
-              </div>
-
-              <div style={{ borderTop: "1px solid hsl(0 0% 88%)", paddingTop: "1.5rem" }}>
-                <p className="section-label mb-3">Elsewhere</p>
-                <div className="flex flex-wrap gap-6">
-                  {["GitHub", "LinkedIn", "LeetCode", "CodeChef"].map((name) => (
-                    <a
-                      key={name}
-                      href="#"
-                      className="exhibit-link"
-                      data-testid={`contact-social-${name.toLowerCase()}`}
-                    >
-                      {name} →
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div>
-              {submitted ? (
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6rem" }}>
+          <div>
+            <p className="exhibit-label" style={{ color: "#C9A96E", marginBottom: "2rem" }}>Find Me</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+              {socials.map((s, i) => (
                 <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="flex flex-col justify-center h-full"
-                  style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.85rem", color: "hsl(0 0% 28%)" }}
+                  key={i}
+                  initial={{ opacity: 0, x: -12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.07, ease: "easeOut" }}
+                  style={{ borderTop: "1px solid #1E1E22", padding: "1.25rem 0" }}
                 >
-                  <p className="section-label mb-3">Received.</p>
-                  <p>Thank you for reaching out. I'll be in touch.</p>
+                  <a href={s.href} className="museum-link" data-testid={`contact-${s.label.toLowerCase()}`}>
+                    {s.label} →
+                  </a>
                 </motion.div>
-              ) : (
-                <form
-                  className="flex flex-col gap-8"
-                  onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
-                  data-testid="contact-form"
-                >
-                  <div>
-                    <label className="section-label block mb-2">Name</label>
-                    <input
-                      type="text"
-                      placeholder="Your name"
-                      required
-                      className="underline-input"
-                      data-testid="input-name"
-                    />
-                  </div>
-                  <div>
-                    <label className="section-label block mb-2">Email</label>
-                    <input
-                      type="email"
-                      placeholder="your@email.com"
-                      required
-                      className="underline-input"
-                      data-testid="input-email"
-                    />
-                  </div>
-                  <div>
-                    <label className="section-label block mb-2">Message</label>
-                    <textarea
-                      placeholder="What are you working on?"
-                      rows={4}
-                      required
-                      className="underline-input resize-none"
-                      data-testid="input-message"
-                    />
-                  </div>
-                  <div>
-                    <button
-                      type="submit"
-                      className="exhibit-link"
-                      style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
-                      data-testid="button-send"
-                    >
-                      Send →
-                    </button>
-                  </div>
-                </form>
-              )}
+              ))}
+              <div style={{ borderTop: "1px solid #1E1E22" }} />
+            </div>
+
+            <div style={{ marginTop: "2.5rem" }}>
+              <p className="exhibit-label" style={{ marginBottom: "0.5rem" }}>Direct</p>
+              <a
+                href="mailto:dhruvisrivastava27@gmail.com"
+                className="museum-link"
+                style={{ fontSize: "0.78rem" }}
+                data-testid="contact-email"
+              >
+                dhruvisrivastava27@gmail.com →
+              </a>
             </div>
           </div>
 
-          <div
-            style={{ borderTop: "1px solid hsl(0 0% 88%)", marginTop: "5rem", paddingTop: "1.5rem" }}
-          >
-            <p className="section-label">2025 Dhruvi Srivastava</p>
+          <div>
+            <p className="exhibit-label" style={{ color: "#C9A96E", marginBottom: "2rem" }}>Write to Me</p>
+            {sent ? (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6 }}
+              >
+                <p className="font-serif" style={{ fontSize: "1.4rem", fontWeight: 300, fontStyle: "italic", color: "#C9A96E" }}>
+                  Received. I'll be in touch.
+                </p>
+              </motion.div>
+            ) : (
+              <form
+                style={{ display: "flex", flexDirection: "column", gap: "2rem" }}
+                onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+                data-testid="contact-form"
+              >
+                <div>
+                  <label className="exhibit-label" style={{ display: "block", marginBottom: "0.5rem" }}>Name</label>
+                  <input type="text" placeholder="Your name" required className="underline-input" data-testid="input-name" />
+                </div>
+                <div>
+                  <label className="exhibit-label" style={{ display: "block", marginBottom: "0.5rem" }}>Email</label>
+                  <input type="email" placeholder="your@email.com" required className="underline-input" data-testid="input-email" />
+                </div>
+                <div>
+                  <label className="exhibit-label" style={{ display: "block", marginBottom: "0.5rem" }}>Message</label>
+                  <textarea placeholder="What are you working on?" rows={4} required className="underline-input" style={{ resize: "none" }} data-testid="input-message" />
+                </div>
+                <div>
+                  <button
+                    type="submit"
+                    className="museum-link"
+                    style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+                    data-testid="button-send"
+                  >
+                    Send →
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
-        </motion.div>
-      </div>
+        </div>
+
+        <div style={{ borderTop: "1px solid #1E1E22", marginTop: "6rem", paddingTop: "2rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <p className="exhibit-label">Museum of Engineering &amp; Artificial Intelligence</p>
+          <p className="exhibit-label">2025 — Dhruvi Srivastava</p>
+        </div>
+      </motion.div>
     </section>
   );
 }

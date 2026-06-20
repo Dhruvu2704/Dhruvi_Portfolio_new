@@ -1,0 +1,214 @@
+Redesign this portfolio as a premium "Museum of Engineering & Artificial Intelligence" experience.
+
+DO NOT create a simple portfolio website with cards and sections.
+
+The site should feel like walking through a futuristic art museum curated by an AI engineer.
+
+DESIGN DIRECTION
+
+Combine:
+
+* The atmosphere of a modern art museum
+* The sophistication of Apple product pages
+* The storytelling of a high-end exhibition
+* The technical credibility of OpenAI and Stripe
+
+Avoid:
+
+* Generic portfolio templates
+* Basic cards
+* Bootstrap styling
+* Glassmorphism
+* Generic AI particle backgrounds
+* Plain white sections
+
+VISUAL STYLE
+
+* Dark museum environment
+* Matte black walls (#0B0B0D)
+* Soft spotlight lighting effects
+* Large typography
+* Generous spacing
+* Smooth cinematic animations
+* Elegant serif headings paired with modern sans-serif body text
+* Floating exhibit labels
+* Subtle grain texture
+* Premium transitions
+
+LANDING EXPERIENCE
+
+The homepage should open like entering a museum.
+
+Display:
+
+"DHRUVI SRIVASTAVA"
+
+Below:
+
+Engineer.
+Builder.
+AI Explorer.
+
+As the user scrolls, the portfolio unfolds like exhibition halls.
+
+Add a subtle spotlight following cursor movement.
+
+EXHIBITION DESIGN
+
+Instead of a Projects section, create:
+
+EXHIBITIONS
+
+Each project becomes an art installation.
+
+---
+
+EXHIBITION I
+
+CRIME ATLAS
+
+Large immersive panel.
+
+Show:
+
+Problem
+Investigation
+Technology
+Deployment
+
+Add animated maps, crime visualization motifs, and data streams.
+
+Use storytelling:
+
+"The challenge wasn't collecting data.
+It was uncovering patterns hidden inside it."
+
+---
+
+EXHIBITION II
+
+REEL
+
+Design like a cinematic gallery.
+
+Use film-inspired layouts.
+
+Movie posters slide through the background.
+
+Show NLP pipeline visually.
+
+Display:
+
+CountVectorizer
+Cosine Similarity
+Recommendation Engine
+
+as museum exhibit labels.
+
+---
+
+EXHIBITION III
+
+NEXUS CRM
+
+Present it as a systems architecture installation.
+
+Animated workflow diagrams.
+
+Customer lifecycle visualizations.
+
+Data moving through nodes.
+
+---
+
+EXHIBITION IV
+
+HOSPITAL MANAGEMENT SYSTEM
+
+Present as the foundation exhibit.
+
+Retro terminal aesthetics.
+
+Blueprint-style diagrams.
+
+Minimal but elegant.
+
+SCROLL EXPERIENCE
+
+The entire portfolio should feel like a guided museum tour.
+
+Each section enters dramatically.
+
+Large exhibition numbers:
+
+01
+02
+03
+04
+
+Occupying huge portions of the screen.
+
+ANIMATIONS
+
+Use Framer Motion.
+
+Implement:
+
+* Smooth scroll
+* Fade-up reveals
+* Horizontal exhibition transitions
+* Parallax movement
+* Depth effects
+* Image scaling
+* Floating exhibit labels
+
+ENGINEER IDENTITY
+
+Create a dedicated section called:
+
+THE ENGINEER
+
+Show:
+
+9.16 CPI
+AI & Data Science
+GLA University
+
+Display skills as curated artifacts rather than progress bars.
+
+Example:
+
+Python
+Machine Learning
+Data Analysis
+NLP
+Flask
+FastAPI
+
+CONTACT SECTION
+
+Final room of the museum.
+
+Headline:
+
+"End of Exhibition"
+
+Include:
+
+GitHub
+LinkedIn
+LeetCode
+CodeChef
+Email
+
+OVERALL FEELING
+
+The visitor should feel:
+
+"I'm not viewing a student's portfolio."
+
+Instead:
+
+"I'm exploring the work of an engineer who treats software projects like carefully crafted exhibits."
+
+Every pixel should feel intentional, premium, and memorable.
