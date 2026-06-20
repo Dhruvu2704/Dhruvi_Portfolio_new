@@ -10,7 +10,7 @@ const exhibits = [
     problem: "Crime data exists but insight doesn't. Analysts need tools that surface patterns, not just numbers.",
     process: "Raw data ingestion → Feature engineering → Scikit-Learn model training → Flask REST API → Interactive dashboard → Deployed on Render.",
     outcome: "A publicly accessible live application with crime-hotspot mapping across 5+ analytical dimensions.",
-    links: { github: "#", live: "#" },
+    links: { github: "https://github.com/Dhruvu2704/Crime_Atlas", live: "https://crime-atlas.onrender.com" },
   },
   {
     number: "Exhibit II",
@@ -21,7 +21,7 @@ const exhibits = [
     problem: "How do you recommend what someone doesn't know they want yet?",
     process: "CountVectorizer → cosine similarity on movie metadata → optimized vectorization pipeline → responsive UI.",
     outcome: "A personalized recommendation engine with measurably faster query performance on large datasets.",
-    links: { github: "#" },
+    links: { github: "https://github.com/Dhruvu2704/REEL_ML_Model" },
   },
   {
     number: "Exhibit III",
@@ -32,7 +32,7 @@ const exhibits = [
     problem: "Most CRM tutorials scratch the surface. This one goes deep.",
     process: "Role-based authentication → CRUD operations → SQLAlchemy ORM → RESTful API endpoints → Modular architecture.",
     outcome: "A production-ready CRM with responsive dashboards and scalable customer lifecycle management.",
-    links: { github: "#" },
+    links: { github: "https://github.com/Dhruvu2704/NexusCRM_Python" },
   },
   {
     number: "Exhibit IV",
@@ -43,7 +43,7 @@ const exhibits = [
     problem: "How do you build a real system with no libraries, just C and a file system?",
     process: "Modular architecture → file-based persistent storage → data structures for patient, doctor, and appointment management.",
     outcome: "A working console-based management system built from first principles.",
-    links: {},
+    links: { github: "https://github.com/Dhruvu2704/C_Project_2" },
   },
 ];
 
@@ -112,12 +112,12 @@ export default function Projects() {
 
               <div className="flex gap-6">
                 {ex.links.github && (
-                  <a href={ex.links.github} className="exhibit-link" data-testid={`exhibit-${i}-github`}>
+                  <a href={ex.links.github} className="exhibit-link" target="_blank" rel="noopener noreferrer" data-testid={`exhibit-${i}-github`}>
                     GitHub →
                   </a>
                 )}
                 {ex.links.live && (
-                  <a href={ex.links.live} className="exhibit-link" data-testid={`exhibit-${i}-live`}>
+                  <a href={ex.links.live} className="exhibit-link" target="_blank" rel="noopener noreferrer" data-testid={`exhibit-${i}-live`}>
                     Live Demo →
                   </a>
                 )}

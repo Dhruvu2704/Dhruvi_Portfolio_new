@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const socials = [
-  { label: "GitHub", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "LeetCode", href: "#" },
-  { label: "CodeChef", href: "#" },
+  { label: "GitHub", href: "https://github.com/Dhruvu2704" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/dhruvi-srivastava-317627375/" },
+  { label: "LeetCode", href: "https://leetcode.com/u/dhruvisri27/" },
+  { label: "CodeChef", href: "https://www.codechef.com/users/dhruvisri27" },
   { label: "Email", href: "mailto:dhruvisrivastava27@gmail.com" },
 ];
 
@@ -77,7 +77,7 @@ export default function Contact() {
                   transition={{ duration: 0.4, delay: i * 0.07, ease: "easeOut" }}
                   style={{ borderTop: "1px solid #1E1E22", padding: "1.25rem 0" }}
                 >
-                  <a href={s.href} className="museum-link" data-testid={`contact-${s.label.toLowerCase()}`}>
+                  <a href={s.href} className="museum-link" target={s.href.startsWith("mailto") ? undefined : "_blank"} rel="noopener noreferrer" data-testid={`contact-${s.label.toLowerCase()}`}>
                     {s.label} →
                   </a>
                 </motion.div>

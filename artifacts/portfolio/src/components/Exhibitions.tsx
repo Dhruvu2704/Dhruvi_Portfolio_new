@@ -27,7 +27,7 @@ const exhibits = [
         text: "Publicly accessible live application deployed on Render. The full lifecycle — from raw CSV to production URL — engineered from scratch.",
       },
     ],
-    links: { github: "#", live: "#" },
+    links: { github: "https://github.com/Dhruvu2704/Crime_Atlas", live: "https://crime-atlas.onrender.com" },
   },
   {
     number: "02",
@@ -55,7 +55,7 @@ const exhibits = [
         text: "Integrated the ML backend with a responsive UI, creating a seamless end-to-end experience from query input to ranked recommendation output.",
       },
     ],
-    links: { github: "#" },
+    links: { github: "https://github.com/Dhruvu2704/REEL_ML_Model" },
   },
   {
     number: "03",
@@ -83,7 +83,7 @@ const exhibits = [
         text: "Responsive dashboards that reduced manual data management overhead — operational efficiency through thoughtful UI, not just raw functionality.",
       },
     ],
-    links: { github: "#" },
+    links: { github: "https://github.com/Dhruvu2704/NexusCRM_Python" },
   },
   {
     number: "04",
@@ -111,7 +111,7 @@ const exhibits = [
         text: "File-based storage system replacing a database. Binary and text file handling for durable, crash-safe data across program sessions.",
       },
     ],
-    links: {},
+    links: { github: "https://github.com/Dhruvu2704/C_Project_2" },
   },
 ];
 
@@ -222,12 +222,12 @@ export default function Exhibitions() {
 
                 <div style={{ display: "flex", gap: "2rem" }}>
                   {exhibit.links.github && (
-                    <a href={exhibit.links.github} className="museum-link" data-testid={`exhibit-${idx}-github`}>
+                    <a href={exhibit.links.github} className="museum-link" target="_blank" rel="noopener noreferrer" data-testid={`exhibit-${idx}-github`}>
                       GitHub →
                     </a>
                   )}
                   {exhibit.links.live && (
-                    <a href={exhibit.links.live} className="museum-link" data-testid={`exhibit-${idx}-live`}>
+                    <a href={exhibit.links.live} className="museum-link" target="_blank" rel="noopener noreferrer" data-testid={`exhibit-${idx}-live`}>
                       Live Demo →
                     </a>
                   )}
