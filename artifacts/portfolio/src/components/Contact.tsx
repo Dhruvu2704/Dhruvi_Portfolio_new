@@ -11,6 +11,42 @@ const socials = [
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
+const [loading, setLoading] = useState(false);
+
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  setLoading(true);
+
+  const formData = new FormData(e.currentTarget);
+
+  formData.append(
+    "access_key",
+    "ca42df98-1e2f-40b2-ac87-263476a02280"
+  );
+
+  formData.append(
+    "subject",
+    "New Portfolio Inquiry"
+  );
+
+  const response = await fetch(
+    "https://api.web3forms.com/submit",
+    {
+      method: "POST",
+      body: formData,
+    }
+  );
+
+  const result = await response.json();
+
+  if (result.success) {
+    setSent(true);
+    e.currentTarget.reset();
+  }
+
+  setLoading(false);
+};
 
   return (
     <section
@@ -113,29 +149,57 @@ export default function Contact() {
             ) : (
               <form
                 style={{ display: "flex", flexDirection: "column", gap: "2rem" }}
-                onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+                onSubmit={handleSubmit}
                 data-testid="contact-form"
               >
                 <div>
                   <label className="exhibit-label" style={{ display: "block", marginBottom: "0.5rem" }}>Name</label>
-                  <input type="text" placeholder="Your name" required className="underline-input" data-testid="input-name" />
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Your name"
+                    required
+                    className="underline-input"
+                    data-testid="input-name"
+                  />
                 </div>
                 <div>
                   <label className="exhibit-label" style={{ display: "block", marginBottom: "0.5rem" }}>Email</label>
-                  <input type="email" placeholder="your@email.com" required className="underline-input" data-testid="input-email" />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    required
+                    className="underline-input"
+                    data-testid="input-email"
+                  />
                 </div>
                 <div>
                   <label className="exhibit-label" style={{ display: "block", marginBottom: "0.5rem" }}>Message</label>
-                  <textarea placeholder="What are you working on?" rows={4} required className="underline-input" style={{ resize: "none" }} data-testid="input-message" />
+                  <textarea
+                    name="message"
+                    placeholder="What are you working on?"
+                    rows={4}
+                    required
+                    className="underline-input"
+                    style={{ resize: "none" }}
+                    data-testid="input-message"
+                  />
                 </div>
                 <div>
                   <button
                     type="submit"
+                    disabled={loading}
                     className="museum-link"
-                    style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
-                    data-testid="button-send"
+                    style={{
+                      background: "none",
+                      border: "none",
+                      cursor: loading ? "not-allowed" : "pointer",
+                      padding: 0,
+                      opacity: loading ? 0.6 : 1,
+                    }}
                   >
-                    Send →
+                    {loading ? "Sending..." : "Send →"}
                   </button>
                 </div>
               </form>
